@@ -67,9 +67,9 @@ class Registers:
     def _update_holding_registers(self) -> bool:
         """Read Holding Registers."""
         res1 = self._connection.client.read_holding_registers(
-            1, 37, slave=self._connection.slave)
+            1, count=37, slave=self._connection.slave)
         res2 = self._connection.client.read_holding_registers(
-            200, 3, slave=self._connection.slave)
+            200, count=3, slave=self._connection.slave)
         if res1.isError() or res2.isError():
             return False
         res = {k: v for k, v in zip(range(1, 37), res1.registers)}
@@ -81,7 +81,7 @@ class Registers:
     def _update_coils(self) -> bool:
         """Update Coils."""
         res1 = self._connection.client.read_coils(
-            1, 9, slave=self._connection.slave)
+            1, count=9, slave=self._connection.slave)
         if res1.isError():
             return False
         res = {k: v for k, v in zip(range(1, 10), res1.bits)}
@@ -92,9 +92,9 @@ class Registers:
     def _update_discrete_inputs(self) -> bool:
         """Update Discrete Inputs."""
         res1 = self._connection.client.read_discrete_inputs(
-            1, 67, slave=self._connection.slave)
+            1, count=67, slave=self._connection.slave)
         res2 = self._connection.client.read_discrete_inputs(
-            188, 2, slave=self._connection.slave)
+            188, count=2, slave=self._connection.slave)
         if res1.isError() or res2.isError():
             return False
         res = {k: v for k, v in zip(range(1, 67), res1.bits)}
@@ -106,9 +106,9 @@ class Registers:
     def _update_input_registers(self) -> bool:
         """Update input registers"""
         res1 = self._connection.client.read_input_registers(
-            1, 66, slave=self._connection.slave)
+            1, count=66, slave=self._connection.slave)
         res2 = self._connection.client.read_input_registers(
-            67, 66, slave=self._connection.slave)
+            67, count=66, slave=self._connection.slave)
         if res1.isError() or res2.isError():
             return False
         res = {k: v for k, v in zip(range(1, 132),
