@@ -1,10 +1,19 @@
 """Setup for pysmarty2 package."""
 
+import os
 import setuptools
 
-
-with open("README.md", "r") as fh:
+# Read README.md
+with open("README.md", "r", encoding="utf-8") as fh:
     LONG_DESCRIPTION = fh.read()
+
+# Ensure requirements.txt exists before reading it
+if os.path.exists("requirements.txt"):
+    with open("requirements.txt", "r", encoding="utf-8") as f:
+        REQUIREMENTS = [line.strip() for line in f if line.strip()]
+else:
+    REQUIREMENTS = []
+
 
 setuptools.setup(
     name="pysmarty2",
