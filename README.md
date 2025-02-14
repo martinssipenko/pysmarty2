@@ -13,6 +13,25 @@ The package was renamed to `pysmarty2` to allow for publishing it to PyPI withou
 pip install pysmarty2
 ```
 
+## Publish
+
+1. Make sure that `setup.py` is updated with the new version, commit and push it before version is tagged.
+2. Tag the new version.
+3. Start python container:
+
+```sh
+docker run --rm -it -v $(pwd):/pystmarty2 python:3.13 bash
+```
+
+4. Then from within container run:
+
+```sh
+cd /pystmarty2
+pip install build twine
+python -m build
+twine upload dist/*
+```
+
 ## Acknowledgments
 
 Please give credit to the original author for their work on `pysmarty`. This fork was created to make minor modifications and improvements, but the majority of the work remains the original author's.
