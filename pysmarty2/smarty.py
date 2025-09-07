@@ -7,8 +7,8 @@ from .connection import Connection
 class Smarty:
     """Smarty Class."""
 
-    def __init__(self, host, port=502, slave=1, loop=None):
-        self.connection = Connection(host, port, slave, loop)
+    def __init__(self, host, port=502, device_id=1, loop=None):
+        self.connection = Connection(host, port, device_id, loop)
         self._registers = Registers(self.connection)
 
     @property

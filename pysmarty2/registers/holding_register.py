@@ -18,7 +18,7 @@ class HoldingRegister(BaseRegister):
     def update_state(self):
         """Read Register."""
         res = self._connection.client.read_holding_registers(
-            self.addr, slave=self._connection.slave)
+            self.addr, device_id=self._connection.device_id)
         if not res.isError():
             self.state = res.registers[0]
 
@@ -32,7 +32,7 @@ class HoldingRegister(BaseRegister):
             value = self._states[state]
         try:
             res = self._connection.client.write_register(
-                self.addr, value, slave=self._connection.slave)
+                self.addr, value, device_id=self._connection.device_id)
             if not res.isError():
                 self.state = value
         except KeyError as ex:

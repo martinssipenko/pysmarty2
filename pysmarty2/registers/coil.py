@@ -13,13 +13,13 @@ class Coil(BaseRegister):
     def update_state(self):
         """Read Register."""
         res = self._connection.client.read_coils(
-            self.addr, slave=self._connection.slave)
+            self.addr, device_id=self._connection.device_id)
         if not res.isError():
             self.state = res.bits[0]
 
     def set_state(self, state):
         """Write Register."""
         res = self._connection.client.write_coil(
-            self.addr, state, slave=self._connection.slave)
+            self.addr, state, device_id=self._connection.device_id)
         if not res.isError():
             self.state = state
