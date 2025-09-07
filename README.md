@@ -6,7 +6,6 @@ This package, `pysmarty2`, is a fork of the original [`pysmarty`](https://github
 
 The package was renamed to `pysmarty2` to allow for publishing it to PyPI without conflicting with the existing `pysmarty` package.
 
-
 ## Install
 
 ```bash

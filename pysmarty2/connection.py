@@ -6,12 +6,12 @@ from pymodbus.client import ModbusTcpClient
 class Connection:
     """Modbus Client."""
 
-    def __init__(self, host, port, slave=1, loop=None):
+    def __init__(self, host, port, device_id=1, loop=None):
         """Modbus Connection init."""
 
         # pylint: disable=unsubscriptable-object
         self._client = ModbusTcpClient(host=host, port=port)
-        self._slave = slave
+        self._device_id = device_id
 
     @property
     def client(self):
@@ -29,9 +29,9 @@ class Connection:
         return self._client.port
 
     @property
-    def slave(self):
-        """Get Slave."""
-        return self._slave
+    def device_id(self):
+        """Get device_id."""
+        return self._device_id
 
     def is_connected(self):
         """Return connection state. Attempt to connect if not already connected."""

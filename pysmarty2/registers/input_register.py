@@ -24,6 +24,6 @@ class InputRegister(BaseRegister):
     def update_state(self):
         """Read Register."""
         res = self._connection.client.read_input_registers(
-            self.addr, slave=self._connection.slave)
+            self.addr, device_id=self._connection.device_id)
         if not res.isError():
             self.state = res.registers[0]
